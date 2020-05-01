@@ -1,4 +1,4 @@
-(ns joy-clojure1.core)
+(ns joy-clojure.core)
 
 (defn r->lfix
   ([a op b] (op a b))
@@ -33,3 +33,23 @@
 (infix3 10 * 2 + 3) ;; => 23
 
 (< (+ 1 (* 2 3) (* 2 (+ 1 3))))
+
+(sort < [2 5 4 1 6 3 7])
+(sort > [2 5 4 1 6 3 7])
+
+(defprotocol Concatenable
+  (cat [this other]))
+
+(extend-type String
+  Concatenable
+  (cat [this other]
+    (.concat this other)))
+
+(cat "House " " of lies")
+
+(extend-type java.util.List
+  Concatenable
+  (cat [this other]
+    (concat this other)))
+
+(cat [1 2 3] [4 5 6])
