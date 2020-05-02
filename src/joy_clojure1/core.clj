@@ -53,3 +53,27 @@
     (concat this other)))
 
 (cat [1 2 3] [4 5 6])
+
+
+
+(def make-list #(list %&))
+
+(make-list 1 2 3 4 5)
+
+;; use do when you have a series  of expressions that need to be treated as one
+(do
+  (def x 5)
+  (def y 4)
+  (+ x y) ; addition is executed but thrown away...
+  [x y])  ; only the final expression is returned
+  ;; => [5 4]
+
+;; LOCALS
+
+(let [ r       5
+      pi       3.1415
+      r-sq (* r r) ]
+  (println "radius is" r)
+  (* pi r-sq))
+
+; LOOPS

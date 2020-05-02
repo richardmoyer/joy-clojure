@@ -32,4 +32,6 @@
   (let [[file rank] pos]
     (board (index file rank))))
 
-(lookup (initial-board) "a1")
+(lookup (initial-board) "a8")
+
+(letfn)
