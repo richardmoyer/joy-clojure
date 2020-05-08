@@ -37,22 +37,22 @@
 (sort < [2 5 4 1 6 3 7])
 (sort > [2 5 4 1 6 3 7])
 
-(defprotocol Concatenable
-  (cat [this other]))
+;; (defprotocol Concatenable
+;;   (cat [this other]))
 
-(extend-type String
-  Concatenable
-  (cat [this other]
-    (.concat this other)))
+;; (extend-type String
+;;   Concatenable
+;;   (cat [this other]
+;;     (.concat this other)))
 
-(cat "House " " of lies")
+;; (cat "House " " of lies")
 
-(extend-type java.util.List
-  Concatenable
-  (cat [this other]
-    (concat this other)))
+;; (extend-type java.util.List
+;;   Concatenable
+;;   (cat [this other]
+;;     (concat this other)))
 
-(cat [1 2 3] [4 5 6])
+;; (cat [1 2 3] [4 5 6])
 
 
 
@@ -77,3 +77,20 @@
   (* pi r-sq))
 
 ; LOOPS
+(defn print-down-from [x]
+  (when (pos? x)
+    (println x)
+    (recur (dec x))))
+
+(print-down-from 99)
+
+;; when is used above. generally when should be used in the following cases:
+;; 1. no `else` part is associated with the result of a conditional
+;; 2. you require an implicit `do` in order to perform side effects
+
+(defn sum-down-from [sum x]
+  (if (pos? x)
+    (recur (+ sum x) (dec x))
+    sum))
+
+(sum-down-from 0 10)
